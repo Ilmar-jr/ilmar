@@ -1,21 +1,17 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-import os
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 import pandas as pd
 from bs4 import BeautifulSoup
 import pyautogui
 
-chrome_options = webdriver.ChromeOptions()
-chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_argument("--no-sandbox")
-
-driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=chrome_options)
-
-
 def webscraping():
+
+    # login
+    servico = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=servico)
 
     driver.get('https://espacolaser.evup.com.br/Login')
     time.sleep(3)
