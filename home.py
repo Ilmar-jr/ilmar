@@ -4,8 +4,6 @@ import web
 
 st.set_page_config(layout="wide")
 
-
-
 if st.button("Atualizatr", type="primary"):
     tabela = web.webscraping()
     vendedor = tabela['Vendedor'].unique()
@@ -13,7 +11,7 @@ if st.button("Atualizatr", type="primary"):
     cargo = tabela['cargo'].unique()
     forma = tabela['forma de pagamento'].unique()
     
-    tabela.to_excel('base.xlsx')
+    #tabela.to_excel('base.xlsx')
     #st.table(tabela)
 else:
     tabela=pd.read_excel('base.xlsx')
@@ -23,8 +21,6 @@ else:
     forma = tabela['forma de pagamento'].unique()
 
 dados = pd.DataFrame(tabela)
-
-
 
 with st.sidebar:
     vendedor = st.selectbox('vendedor',vendedor,index=None)
